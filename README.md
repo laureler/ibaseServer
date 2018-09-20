@@ -1,11 +1,11 @@
 # egg-demo
 
-egg demo 展示egg-demo示例
+egg demo
 
-## QuickStart快速开始
+## QuickStart
 
 <!-- add docs here for user -->
-[查看项目结构](./项目结构.md)
+
 see [egg docs][egg] for more detail.
 
 ### Development
