@@ -18,22 +18,22 @@ module.exports = (options) => {
 		changeOrigin:true,
 		// followRedirects:true,  //跟随重定向 默认false
 		ws:true,
-		hostRewrite:'localhost:7001',
+		hostRewrite:'172.16.42.126:7001',
 	}));
 	return async function(ctx, next) {
 		if(pathToRegexp([
-			'/mainWeb/*',
-			'pubWeb/*',
-			'/cas/*',
-			'/formengineWebservice/*',
-			'/editorWebService/*',
-			'/formengindWebService/*',
-			'/logsWeb/*',
-			'/manager/*',
-			'/public/*',
-			'/pubWeb/*',
-			'/webgisWebService/*',
-			'/workflowWebService/*',
+			'/mainWeb/:foo*',
+			'pubWeb/:foo*',
+			'/cas/:foo*',
+			'/formengineWebservice/:foo*',
+			'/editorWebService/:foo*',
+			'/formengindWebService/:foo*',
+			'/logsWeb/:foo*',
+			'/manager/:foo*',
+			'/public/:foo*',
+			'/pubWeb/:foo*',
+			'/webgisWebService/:foo*',
+			'/workflowWebService/:foo*',
 		]).exec(ctx.request.url)) {
 			ibaseProxy(ctx, next);
 		}
