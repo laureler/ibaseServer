@@ -14,27 +14,35 @@ module.exports = (options) => {
 		changeOrigin: true,
 	}));
 	const ibaseProxy = k2c(httpProxy({
-		target:'http://192.168.10.95:8080',
+		target:'http://bdcsq.zsfdc.gov.cn',
 		changeOrigin:true,
 		// followRedirects:true,  //跟随重定向 默认false
 		ws:true,
-		hostRewrite:'172.16.42.126:7001',
+		hostRewrite:'localhost:7001',
 	}));
-	return async function(ctx, next) {
-		if(pathToRegexp([
+	function getIbaseProxy(ctx) {
+		return pathToRegexp([
 			'/mainWeb/:foo*',
 			'pubWeb/:foo*',
 			'/cas/:foo*',
 			'/formengineWebservice/:foo*',
 			'/editorWebService/:foo*',
-			'/formengindWebService/:foo*',
 			'/logsWeb/:foo*',
 			'/manager/:foo*',
 			'/public/:foo*',
 			'/pubWeb/:foo*',
 			'/webgisWebService/:foo*',
 			'/workflowWebService/:foo*',
-		]).exec(ctx.request.url)) {
+		]).exec(ctx.request.url)
+		&& !pathToRegexp([
+				'/:foo/:foo*.js',
+				'/:foo/:foo*.css',
+				'/:foo/:foo*.png',
+				'/:foo/:foo*.jpg',
+			]).exec(ctx.request.url)
+	}
+	return async function(ctx, next) {
+		if(getIbaseProxy(ctx)) {
 			ibaseProxy(ctx, next);
 		}
 		else if (pathToRegexp(/asd\/v1/).exec(ctx.request.url)) {
