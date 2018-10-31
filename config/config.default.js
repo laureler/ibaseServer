@@ -24,14 +24,17 @@ module.exports = appInfo => {
 			prefix: '/mainWeb',
 			dir: path.join(ibaseDir, '/wimushroom/源码/main/mainWeb/src/main/webapp'),
 		},
+		//奇怪的映射 不应该存在的
 		{
 			prefix: '/mainWeb/images',
 			dir: path.join(ibaseDir, '/wimushroom/源码/main/mainWeb/src/main/webapp/img'),
 		},
+		// 映射pubWeb模块
 		{
 			prefix: '/pubWeb',
 			dir: path.join(ibaseDir, '/wimushroom/源码/main/pubWeb/src/main/webapp'),
 		},
+		// 映射editorWebService模块
 		{
 			prefix: '/editorWebService',
 			dir: path.join(ibaseDir, '/wimushroom/源码/workflow/editorWebService/src/main/webapp'),
@@ -57,10 +60,7 @@ module.exports = appInfo => {
 			dir: path.join(ibaseDir, '/wimushroom/源码/public'),
 		}
 	]
-	// config.static = {
-	//   prefix: '/cas',
-	//   dir: path.join(appInfo.baseDir, '../../sourceCode/ibase_sprint004/wimushroom/源码/cas/casWebService/src/main/webapp'),
-	// }
+	
 	// config.static = {
 	//   prefix: '/',
 	//   dir: path.join(appInfo.baseDir, '../../sourceCode/ibase_sprint004/wimushroom/源码'),
