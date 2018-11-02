@@ -6,7 +6,7 @@ module.exports = appInfo => {
 	
 	
 	//如果需要配置ibase项目 添加ibase项目的基本地址 例如： d://ibase2.0  其中ibase2.0内部应当有两个文件(.gitignore、readme.md)一个文件夹(wimushroom)
-	var ibaseDir  = "D://sourceCode/ibase_sprint004"
+	var ibaseDir  = "C://dev/projects/ibase_sprint004"
 	
 	// 如果有配置没有加上，可以在此提交代码，prefix为根路径后面的相对路径（localhost:8080/mainWeb/index/1 --->你只需要写/mainWeb就可以了，所有的mainWeb后面的都会给你配置上去。）、dir为你的静态资源相对路径
 	config.multipleStatic = [

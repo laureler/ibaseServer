@@ -11,6 +11,9 @@
 	1. 你需要关闭静态资源的代理 -->  httpProxy.js中isProxyStatic()方法，默认就是不代理的。
 	2. 此时由于没有代理静态资源，会出现404，所以你需要配置本地的静态资源。config.default.js中配置变量ibaseDir为你的本地ibase项目
 	3. ibase项目常用的web模块已经配置出来相对路径，你可以参考继续配置自己的地址。
+> 注意 ibaseDir是不同的电脑上面配置的地址，还烦自行修改地址
+>例如：var ibaseDir  = "C://dev/projects/ibase_sprint004"
+
 2.如果你是不希望使用代理功能，app.js注释代码即可	
 
 
