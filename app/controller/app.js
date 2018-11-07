@@ -1,6 +1,7 @@
 const Model = require('../mocks/article/list');
 const Controller = require('egg').Controller;
 class AppController extends Controller {
+  //服务端渲染
   async index() {
     await this.ctx.render('app.js', { url: this.ctx.url });
   }
