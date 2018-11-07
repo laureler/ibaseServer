@@ -14,7 +14,8 @@ module.exports = (options) => {
 		changeOrigin: true,
 	}));
 	const ibaseProxy = k2c(httpProxy({
-		target:'http://bdcsq.zsfdc.gov.cn',
+		// target:'http://bdcsq.zsfdc.gov.cn',
+		target:'http://192.168.10.95:8080',
 		changeOrigin:true,
 		// followRedirects:true,  //跟随重定向 默认false
 		ws:true,
