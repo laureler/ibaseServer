@@ -50,7 +50,7 @@ module.exports = (options) => {
 			'/webgisWebService/:foo*',
 			'/workflowWebService/:foo*',
 		]).exec(ctx.request.url)
-		&& isProxyStatic()
+		|| isProxyStatic()
 	}
 	return async function(ctx, next) {
 		if(getIbaseProxy(ctx)) {
