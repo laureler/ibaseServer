@@ -63,7 +63,7 @@ module.exports = (options) => {
 		else if (pathToRegexp(/asd\/v1/).exec(ctx.request.url)) {
 			test1Proxy(ctx, next);
 		} else if (pathToRegexp(/comprehensiveMonitorWebService\/*/).exec(ctx.request.url)) {
-			test2Proxy(ctx, next);
+			comprehensiveMonitorProxy(ctx, next);
 		} {
 			await next();
 		}
