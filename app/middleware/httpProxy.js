@@ -9,9 +9,13 @@ module.exports = (options) => {
 		changeOrigin: true,
 	}));
 
-	const test2Proxy = k2c(httpProxy({
-		target: 'http://test1.com',
-		changeOrigin: true,
+	const comprehensiveMonitorProxy = k2c(httpProxy({
+		// target:'http://bdcsq.zsfdc.gov.cn',
+		target:'http://localhost:8080',
+		changeOrigin:true,
+		// followRedirects:true,  //跟随重定向 默认false
+		ws:true,
+		hostRewrite:'localhost:7001',
 	}));
 	const ibaseProxy = k2c(httpProxy({
 		target:'http://bdcsq.zsfdc.gov.cn',
@@ -58,7 +62,7 @@ module.exports = (options) => {
 		}
 		else if (pathToRegexp(/asd\/v1/).exec(ctx.request.url)) {
 			test1Proxy(ctx, next);
-		} else if (pathToRegexp(/asd\/v1/).exec(ctx.request.url)) {
+		} else if (pathToRegexp(/comprehensiveMonitorWebService\/*/).exec(ctx.request.url)) {
 			test2Proxy(ctx, next);
 		} {
 			await next();
