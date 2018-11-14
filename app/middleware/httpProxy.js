@@ -24,23 +24,24 @@ module.exports = (options) => {
 		ws:true,
 		hostRewrite:'localhost:7001',
 	}));
-	function getIbaseProxy(ctx) {
-		/**
-		 * 是否代理静态资源，
-		 *  若真  则代理（不会请求本地的静态资源）
-		 *  若假  则不代理（会出现404、除非你本地做了静态资源映射）
-		 * @param boolean 默认不代理静态资源
-		 */
-		function isProxyStatic(boolean = false) {
-			if(boolean)
-				return boolean
-			return !pathToRegexp([
-					'/:foo/:foo*.js',
-					'/:foo/:foo*.css',
-					'/:foo/:foo*.png',
-					'/:foo/:foo*.jpg',
-		]).exec(ctx.request.url)
+	/**
+	 * 是否代理静态资源，
+	 *  若真  则代理（不会请求本地的静态资源）
+	 *  若假  则不代理（会出现404、除非你本地做了静态资源映射）
+	 * @param boolean 默认不代理静态资源
+	 */
+	function isProxyStatic(boolean = false,url) {
+		if(boolean){
+			return boolean
 		}
+		return !pathToRegexp([
+			'/:foo/:foo*.js',
+			'/:foo/:foo*.css',
+			'/:foo/:foo*.png',
+			'/:foo/:foo*.jpg',
+		]).exec(url)
+	}
+	function getIbaseProxy(ctx) {
 		return pathToRegexp([
 			'/mainWeb/:foo*',
 			'pubWeb/:foo*',
@@ -54,17 +55,31 @@ module.exports = (options) => {
 			'/webgisWebService/:foo*',
 			'/workflowWebService/:foo*',
 		]).exec(ctx.request.url)
-		|| isProxyStatic()
+		&& isProxyStatic(ctx.request.url)
+	}
+
+	/**
+	 * 代理 综合监管项目
+	 * @param ctx
+	 * @returns {RegExpExecArray | boolean}
+	 */
+	function getComprehensiveProxy(ctx){
+		return pathToRegexp([
+				'/comprehensiveMonitorWebService/:foo*',
+			]).exec(ctx.request.url)
+			&& isProxyStatic(true,ctx.request.url)
 	}
 	return async function(ctx, next) {
-		if(getIbaseProxy(ctx)) {
-			ibaseProxy(ctx, next);
+		if (getComprehensiveProxy(ctx)) {
+			comprehensiveMonitorProxy(ctx, next);
 		}
+
 		else if (pathToRegexp(/asd\/v1/).exec(ctx.request.url)) {
 			test1Proxy(ctx, next);
-		} else if (pathToRegexp(/comprehensiveMonitorWebService\/*/).exec(ctx.request.url)) {
-			comprehensiveMonitorProxy(ctx, next);
-		} {
+		} else if(getIbaseProxy(ctx)) {
+			ibaseProxy(ctx, next);
+		}
+		{
 			await next();
 		}
 	};
