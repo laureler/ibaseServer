@@ -15,14 +15,14 @@ module.exports = (options, app) => {
 	 * isProxyStatic 默认是true 代理服务器的文件
 	 * @param ctx 全局配置对象
 	 */
-	async function matchProxyRule(proxyRules, isProxyStatic = true, ctx) {
+	function matchProxyRule(proxyRules, isProxyStatic = true, ctx) {
 		/**
 		 * 是否代理静态资源，
 		 *  若真  则代理（不会请求本地的静态资源）
 		 *  若假  则不代理（会出现404、除非你本地做了静态资源映射）
 		 * @param boolean 默认不代理静态资源
 		 */
-	async function isProxyStatic(boolean, url) {
+	function ProxyStatic(boolean, url) {
 			if (boolean === true) {
 				return true;
 			} else if (pathToRegexp([
@@ -37,9 +37,13 @@ module.exports = (options, app) => {
 			}
 		}
 		var regExpExecArray =  pathToRegexp(proxyRules).exec(ctx.request.url) == undefined?false:true;
-		// console.log("代理服务器"+regExpExecArray?"成功":'失败')
-		let proxyStatic = await isProxyStatic(isProxyStatic, ctx.request.url);
-		// console.log("代理静态资源"+proxyStatic?"成功":'失败');
+		let proxyStatic = ProxyStatic(isProxyStatic, ctx.request.url);
+		var proxyServerStatus = regExpExecArray == undefined?'失败':'成功'
+		var proxyStaticStatus = proxyStatic == undefined?'失败':'成功'
+		console.log('======================')
+		console.log('代理地址:'+ctx.request.url)
+		console.log("代理服务器"+proxyServerStatus)
+		console.log("代理静态资源"+proxyStaticStatus);
 		return regExpExecArray
 			&& proxyStatic
 	}
@@ -54,6 +58,7 @@ module.exports = (options, app) => {
 			k2c1(ctx, next);
 		}
 		else if (matchProxyRule(options.proxy_2.proxyRules, options.proxy_2.isProxyStatic, ctx)) {
+			console.log("代理 middleWare")
 			k2c2(ctx, next);
 		}
 		{

@@ -28,13 +28,15 @@ exports.httpProxy = {
 	proxy_1: {
 		proxyConfig: {
 			// target:'http://bdcsq.zsfdc.gov.cn',
-			target: 'http://192.168.10.95:8080',
+			target: 'http://172.16.42.126:8080',
 			changeOrigin: true,
 			// followRedirects:true,  //跟随重定向 默认false
 			ws: true,
 			hostRewrite: 'localhost:7001',
 		},
-		proxyRules: [],
+		proxyRules: [
+			"/comprehensiveMonitorWebService/:foo*"
+		],
 		//是否代理静态资源
 		isProxyStatic: true,
 	},
@@ -48,7 +50,7 @@ exports.httpProxy = {
 			hostRewrite: 'localhost:7001',
 		},
 		proxyRules: [
-			"comprehensiveMonitorWebService/:foo*",
+
 		],
 		//是否代理静态资源
 		isProxyStatic: true,
