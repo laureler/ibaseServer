@@ -24,11 +24,12 @@ exports.httpProxy = {
 		],
 		//是否代理静态资源
 		isProxyStatic: true,
+		// 由于静态资源必须要有一个来源，如果你不愿意选择代理服务器来帮你代理静态资源（会出现404），你可以选择由 本服务器直接读取你本地的静态文件，ibase的映射已经配置在config.default.js中，但是你需要修改一个路径，变量名称为：ibaseDir。
 	},
 	proxy_1: {
 		proxyConfig: {
 			// target:'http://bdcsq.zsfdc.gov.cn',
-			target: 'http://172.16.42.126:8080',
+			target: 'http://172.16.42.16:8080',
 			changeOrigin: true,
 			// followRedirects:true,  //跟随重定向 默认false
 			ws: true,
