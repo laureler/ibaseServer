@@ -3,7 +3,7 @@ exports.httpProxy = {
 	//默认配置代理了 95服务器
 	proxy_0: {
 		proxyConfig: {
-			target: 'http://192.168.10.95:8080',
+			target: 'http://192.168.10.97:8090',
 			changeOrigin: true,
 			// followRedirects:true,  //跟随重定向 默认false
 			ws: true,
@@ -41,13 +41,15 @@ exports.httpProxy = {
 	proxy_2: {
 		proxyConfig: {
 			// target:'http://bdcsq.zsfdc.gov.cn',
-			target: 'http://192.168.10.95:8080',
+			target: 'http://localhost:8080',
 			changeOrigin: true,
 			// followRedirects:true,  //跟随重定向 默认false
 			ws: true,
 			hostRewrite: 'localhost:7001',
 		},
-		proxyRules: [],
+		proxyRules: [
+			"comprehensiveMonitorWebService/:foo*",
+		],
 		//是否代理静态资源
 		isProxyStatic: true,
 	},
