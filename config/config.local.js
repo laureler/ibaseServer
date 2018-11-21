@@ -51,7 +51,7 @@ exports.httpProxy = {
 			hostRewrite: 'localhost:7001',
 		},
 		proxyRules: [
-
+			"/demo2/:foo*"
 		],
 		//是否代理静态资源
 		isProxyStatic: true,
