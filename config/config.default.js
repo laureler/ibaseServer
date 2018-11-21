@@ -1,8 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 module.exports = app => {
-	const exports = {};
-
+	// let exports = {};
+	const config = exports = {};
 	exports.siteFile = {
 		'/favicon.ico': fs.readFileSync(path.join(app.baseDir, 'app/web/asset/images/favicon.ico'))
 	};
@@ -85,7 +85,7 @@ module.exports = app => {
 		dir: path.join(app.baseDir, 'public')
 	};
 
-	exports.keys = '123456';
+	exports.keys = app.name + '_1537409827938_2257';
 	exports.security = {
 		csrf: {
 			// 默认为 false，当设置为 true 时，将会放过所有 content-type 为 `application/json` 的请求
