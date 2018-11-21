@@ -32,8 +32,8 @@ module.exports = (options, app) => {
 				'/:foo/:foo*.jpg',
 				'/:foo/:foo*.ttf',
 				'/:foo/:foo*.woff',
-			]).exec(url)) {
-				return false
+			]).exec(url) == undefined) {
+				return true
 			}
 		}
 		var regExpExecArray =  pathToRegexp(proxyRules).exec(ctx.request.url) == undefined?false:true;
