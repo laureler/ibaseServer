@@ -40,10 +40,14 @@ module.exports = (options, app) => {
 		let proxyStatic = ProxyStatic(isProxyStatic, ctx.request.url);
 		var proxyServerStatus = regExpExecArray == undefined?'失败':'成功'
 		var proxyStaticStatus = proxyStatic == undefined?'失败':'成功'
-		console.log('======================')
 		console.log('代理地址:'+ctx.request.url)
-		console.log("代理服务器"+proxyServerStatus)
-		console.log("代理静态资源"+proxyStaticStatus);
+		if(regExpExecArray && proxyStatic){
+			console.log("代理静态资源"+proxyStaticStatus);
+		}
+		if(regExpExecArray){
+			console.log("代理服务器资源"+proxyServerStatus)
+		}
+		console.log('======================')
 		return regExpExecArray
 			&& proxyStatic
 	}
