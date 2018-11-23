@@ -9,7 +9,7 @@ module.exports = {
 		app: 'app/web/page/app/index.js'
 	},
 	// 访问路径配置
-	publicPath: '/eggServer/public/',
+	publicPath: '/public/',
 	// buildPath:' ${app_root}/eggServer/public',
 	alias: {
 		component: 'app/web/component',
