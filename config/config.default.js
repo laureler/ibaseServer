@@ -81,9 +81,15 @@ module.exports = app => {
 	};
 
 	exports.static = {
-		prefix: '/eggServer/public/',
-		dir: path.join(app.baseDir, 'public')
+		prefix: '/static/',
+		dir: path.join(app.baseDir, 'app/static')
 	};
+	exports.webpack = {
+		proxy: {
+			host: 'http://127.0.0.1:9000', // target host that matched path will be proxy to
+			match: /^\/static\//, // proxy url path pattern.
+		},
+	}
 
 	exports.keys = app.name + '_1537409827938_2257';
 	exports.security = {

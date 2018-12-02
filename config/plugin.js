@@ -8,3 +8,8 @@ exports.multipleStatic  =  {
 	enable: true,
     package: 'egg-multiple-static',
 }
+
+exports.webpack = {
+	enable: true,
+	package: 'egg-webpack',
+}

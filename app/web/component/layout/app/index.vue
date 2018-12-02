@@ -7,7 +7,7 @@
       <meta http-equiv="content-type" content="text/html;charset=utf-8">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
       <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-      <link href="/public/asset/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+      <link href="/static/asset/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
       <div id="app"><MainLayout><div slot="main"><slot></slot></div></MainLayout></div>    
