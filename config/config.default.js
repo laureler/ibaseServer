@@ -3,6 +3,7 @@ const fs = require('fs');
 module.exports = app => {
 	// let exports = {};
 	const config = exports = {};
+	// 当前浏览器的 标签页图标默认为：
 	exports.siteFile = {
 		'/favicon.ico': fs.readFileSync(path.join(app.baseDir, 'app/web/asset/images/favicon.ico'))
 	};
@@ -67,6 +68,13 @@ module.exports = app => {
 		cache: false
 	};
 
+	/**
+	 * 服务端渲染 vue sevlet side render 配置
+	 * @type {{
+	 * layout: string,
+	 * renderOptions: {basedir: string}
+	 * }}
+	 */
 	exports.vuessr = {
 		layout: path.join(app.baseDir, 'app/web/view/layout.html'),
 		renderOptions: {
@@ -74,6 +82,26 @@ module.exports = app => {
 			basedir: path.join(app.baseDir, 'app/view')
 		}
 	};
+	// exports.vuessr = {
+		// 客户端渲染模板，只是一个基础的HTML骨架，具体内容由前端渲染，同事支持字符串模板（方便css/js注入）,
+		// 默认renderClient会对layout模板进行Vue编译，如果不想对layout进行Vue编译，可以在第三个参数传入  { viewEngine: null }
+		// layout: path.join(app.baseDir, 'app/view/layout.html'),
+		//{Object} 静态资源依赖，内容为一个对象，可以引入很多你想要的静态资源
+		// manifest: path.join(app.baseDir, 'config/manifest.json'),
+		// 是否注入CSS 默认true
+		// injectCss: true,
+		// 是否注入JS 默认true
+		// injectJs: true,
+		// 注入静态资源的位置（包括了JS/CSS），枚举类型
+		// injectRes: []
+		// 失败的时候 默认客户端渲染（默认true)
+		// fallbackToClient: true, // fallback to client rendering after server rendering failed
+		//渲染完成的钩子函数
+		// afterRender: (html, context) => {
+		//   return html;
+		// },
+		// renderOptions: 具体文档在：https://ssr.vuejs.org/zh/api/
+	// };
 
 	exports.logger = {
 		consoleLevel: 'DEBUG',
