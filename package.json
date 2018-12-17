@@ -46,7 +46,6 @@
     "egg-webpack-vue": "^2.0.0",
     "eslint": "^4.3.0",
     "eslint-plugin-vue": "^2.0.1",
-    "imagemin-webpack-plugin": "^1.5.2",
     "ip": "^1.1.5",
     "vconsole": "^3.0.0"
   },

@@ -3,6 +3,10 @@ const Controller = require('egg').Controller;
 class AppController extends Controller {
   //服务端渲染
   async index() {
+    // app.js  ${appRoot}
+    // renderCliend 代表客户端渲染
+    // await this.ctx.renderClient('app.js', { url: this.ctx.url });
+    // render 服务端渲染
     await this.ctx.render('app.js', { url: this.ctx.url });
   }
 
