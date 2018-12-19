@@ -5,7 +5,7 @@
 module.exports = {
 	egg: true,			//特殊参数，只有使用egg server-side-render 特殊配置，需要设置为true， 表示webpack构建的服务端文件放入到了 /app/view目录中
 	framework: 'vue',   // vue | react|weex|html|js 五种配置（使用easywebpack-cli构建的时候，才需要本参数）
-	env:'dev',  // dev(default)|test|prod
+	// env:'dev',  // dev(default)|test|prod
 	// type:'',   // client |server|web|weex （使用easywebpack-cli构建的时候，才需要本参数）
 
 	// webpack 构建入口文件配置
@@ -44,7 +44,7 @@ module.exports = {
 	// 静态资源路径配置为 static 开头
 	publicPath: '/static/',
 	// 注意：开发模式下，文件不落地磁盘（开发模式的编译文件存储在内存中）
-	buildPath:'app/static',
+	buildPath:'static',
 	// webpack dll方案（打包过程不再打包以下配置中的任何代码）
 	dll: ['vue', 'axios', 'vue-router', 'vuex', 'vuex-router-sync'],
 

@@ -5,8 +5,8 @@ const pathToRegexp = require('path-to-regexp');
 
 module.exports = (options, app) => {
 	var k2c0 = k2c(httpProxy(options.proxy_0.proxyConfig));
-	/*var k2c1 = k2c(httpProxy(options.proxy_1.proxyConfig));
-	var k2c2 = k2c(httpProxy(options.proxy_2.proxyConfig));*/
+	var k2c1 = k2c(httpProxy(options.proxy_1.proxyConfig));
+	var k2c2 = k2c(httpProxy(options.proxy_2.proxyConfig));
 
 	/**
 	 *
@@ -50,13 +50,13 @@ module.exports = (options, app) => {
 		if (matchProxyRule(options.proxy_0.proxyRules, options.proxy_0.isProxyStatic, ctx)) {
 			k2c0(ctx,next)
 		}
-		/*else if (matchProxyRule(options.proxy_1.proxyRules, options.proxy_1.isProxyStatic, ctx)) {
+		else if (matchProxyRule(options.proxy_1.proxyRules, options.proxy_1.isProxyStatic, ctx)) {
 			k2c1(ctx, next);
 		}
 		else if (matchProxyRule(options.proxy_2.proxyRules, options.proxy_2.isProxyStatic, ctx)) {
 			console.log("代理 middleWare")
 			k2c2(ctx, next);
-		}*/
+		}
 		{
 			await next();
 		}
