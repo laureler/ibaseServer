@@ -8,8 +8,9 @@ import createStore from './store';
 // 路由
 import createRouter from './router';
 // todo 国际化
-import createI18n from 'framework/i18n/admin';
-
+// import createI18n from 'framework/i18n/admin';
+// 引入less
+import  "../../components/baseApp/assets/css/main.less"
 const options = {base: '/'};
 
 // 初始化vue组件相关

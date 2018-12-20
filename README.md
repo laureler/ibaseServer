@@ -107,10 +107,10 @@ npm start
 ```javascript
 import { sync } from 'vuex-router-sync';
 import store from 'store/app';
-import router from 'component/app/router';
+import router from 'components/app/router';
 import app from './app.vue';
 import App from 'app';
-import Layout from 'component/layout/app';
+import Layout from 'components/layout/app';
 
 App.component(Layout.name, Layout);
 

@@ -20,7 +20,8 @@ module.exports = {
 
 	*/
 	entry: {
-		appClient: 'app/web/page/app/index.js',
+		mainIndexClient: 'app/web/page/app/index.js',
+		demoAppClient: 'app/web/page/app/demoIndex.js',
 
 		// app/app.js?loader=false 代表当前文件不使用loader，他是一个SPA服务端渲染的example
 		// include: ['app/web/page', { 'app/index': 'app/web/page/app/index.js?loader=false' }],
@@ -31,12 +32,12 @@ module.exports = {
 		// }
 	},
 	alias: {
-		component: 'app/web/component',
+		component: 'app/web/components',
 		framework: 'app/web/framework',
 		store: 'app/web/store',
 		vue: 'vue/dist/vue.esm.js',
 		// 'vue$': 'vue/dist/vue.esm.js',
-		// '@': path.join(__dirname, '../', 'app'), 			//整个项目的 {appRoot} 其实可以理解为主文件夹的根路径
+		'@': 'app/web', 			//整个项目的 {appRoot} 其实可以理解为主文件夹的根路径
 		// server: 'app/web/framework/vue/entry/server.js',	//服务端渲染入口
 		// client: 'app/web/framework/vue/entry/client.js',	//客户端渲染入口
 		// asset: 'app/web/asset',								//静态资源位置
@@ -49,7 +50,7 @@ module.exports = {
 	dll: ['vue', 'axios', 'vue-router', 'vuex', 'vuex-router-sync'],
 
 	loaders: {
-
+		less:true,
 	},
 
 	proxy: {

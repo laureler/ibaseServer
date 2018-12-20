@@ -10,7 +10,14 @@ Vue.use(Vuex);
 const host = 'http://127.0.0.1:7001';
 
 const actions = {
-
+    /**
+     * 文章列表数据
+     * @param commit
+     * @param dispatch
+     * @param state
+     * @returns {*}
+     * @constructor
+     */
   FETCH_ARTICLE_LIST: ({ commit, dispatch, state }) => {
     if (!state.articleList.length) {
       return axios.get(`${host}/api/article/list`)
@@ -22,7 +29,15 @@ const actions = {
     }
     return Promise.resolve();
   },
-
+    /**
+     * 文章详细数据
+     * @param commit
+     * @param dispatch
+     * @param state
+     * @param id
+     * @returns {*}
+     * @constructor
+     */
   FETCH_ARTICLE_DETAIL: ({ commit, dispatch, state }, { id }) => {
     if (state.article.id !== Number(id)) {
       return axios.get(`${host}/api/article/${id}`)

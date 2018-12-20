@@ -1,0 +1,65 @@
+.header-nav {
+    max-width: 700px;
+    overflow: hidden;
+    position: relative;
+    padding: 0 20px;
+}
+
+.header-nav>.nav-list {
+    padding: 10px 0;
+    height: 55px;
+    color: #fff;
+    white-space: nowrap;
+    float: left;
+    transition: transform .3s;
+}
+
+.header-nav>span {
+    position: absolute;
+    background-color: #1e88e5;
+    display: inline-block;
+    height: 100%;
+    line-height: 75px;
+    width: 20px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+}
+
+.header-nav>.nav-list>div {
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.header-nav>.nav-list>.is-active {
+    background-color: #4ba0ea;
+}
+.myStar{
+    border-radius: 0.4rem;
+    background-color: #FF6B5F;
+    color: white;
+    font-size: 12px;
+}
+.secondStar{
+    position: absolute;
+    padding: 1px 6px;
+    right: 5px;
+    top: 0.9rem;
+}
+.thirdStar{
+    position: absolute;
+    right: 3px;
+    top: -6px;
+    padding: 0 5px;
+    line-height: 18px;
+}
+.right-pane .third-nav li{
+    position: relative;
+}
+.nav>.unexpand li{
+    position: relative;
+}
+.nav>.unexpand li > .secondStar{
+    top: 0.2rem;
+}

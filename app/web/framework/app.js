@@ -3,6 +3,7 @@ import { sync } from 'vuex-router-sync';
 import './vue/filter';
 import './vue/directive';
 
+
 export default class App {
   constructor(config) {
     this.config = config;
@@ -29,7 +30,8 @@ export default class App {
   }
 
   client() {
-    Vue.prototype.$http = require('axios');
+    // 如果已经在自定义内容 挂载了http 则不再继续挂载
+    Vue.prototype.$http = Vue.prototype.$http==undefined?require('axios'):Vue.prototype.$http;
     const options = this.create(window.__INITIAL_STATE__);
     const app = new Vue(options);
     app.$mount('#app');
