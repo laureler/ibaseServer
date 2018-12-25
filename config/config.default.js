@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+require("ip")
 module.exports = app => {
 	// let exports = {};
 	const config = exports = {};
@@ -127,6 +128,7 @@ module.exports = app => {
 			ignoreJSON: true,
 			enable: false
 		},
+		domainWhiteList:['.domain.com'],  // 安全白名单，以 . 开头
 	},
 	exports.middleware = [
 		'access'
@@ -163,6 +165,7 @@ module.exports = app => {
 				'/editorWebService/:foo*',
 				'/logsWeb/:foo*',
 				'/manager/:foo*',
+				'/mainWeb/:foo*',
 				'/mainWeb/index/hzww',
 				'/pubWeb/:foo*',
 				'/webgisWebService/:foo*',

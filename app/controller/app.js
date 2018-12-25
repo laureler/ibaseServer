@@ -20,7 +20,7 @@ class AppController extends Controller {
 	 * @returns {Promise<void>}
 	 */
 	async client() {
-		await this.ctx.renderClient('appClient.js', {url: this.ctx.url});
+		await this.ctx.renderClient('demoAppClient.js', {url: this.ctx.url});
 	}
 
 	async list() {
@@ -34,5 +34,13 @@ class AppController extends Controller {
 		this.ctx.body = Model.getDetail(id);
 	}
 }
-
+exports.index = async ctx =>{
+	const type = ctx.query.type;
+	const q = ctx.query.q || 'node.js'
+	if(type === 'bin'){
+		ctx.redirect("http://www.baidu.com?key='123'")
+	}else {
+		ctx.redirect("http://www.baidu.com?key='nobin'")
+	}
+}
 module.exports = AppController;
